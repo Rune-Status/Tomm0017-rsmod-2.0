@@ -1,0 +1,35 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.41' apply(false)
+}
+
+apply from: 'gradle/properties.gradle'
+
+allprojects {
+    group 'gg.rsmod'
+    version '0.1.0-SNAPSHOT'
+
+    apply plugin: 'idea'
+    apply plugin: 'org.jetbrains.kotlin.jvm'
+
+    repositories {
+        mavenCentral()
+        maven { url = 'https://dl.bintray.com/michaelbull/maven' }
+    }
+
+    dependencies {
+        compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+        compile "org.slf4j:slf4j-api:$slf4jVersion"
+        compile "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
+
+        compile "com.michael-bull.kotlin-result:kotlin-result:$kotlinResultVersion"
+        compile "com.michael-bull.kotlin-inline-logger:kotlin-inline-logger-jvm:$kinlineVersion"
+    }
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+}
