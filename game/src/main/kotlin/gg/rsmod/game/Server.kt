@@ -9,5 +9,5 @@ class Server {
 
     val ioDispatcher = Dispatchers.IO
 
-    val blockDispatcher = Dispatchers.Default
+    val gameDispatcher = Dispatchers.Default
 }
