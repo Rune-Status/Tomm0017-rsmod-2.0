@@ -5,4 +5,5 @@ ext {
     kinlineVersion = '1.0.0'
     slf4jVersion = '1.7.25'
     log4jVersion = '2.11.2'
+    guiceVersion = '4.2.2'
 }
