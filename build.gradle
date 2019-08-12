@@ -13,6 +13,7 @@ allprojects {
 
     repositories {
         mavenCentral()
+        maven { url "https://jitpack.io" }
         maven { url = 'https://dl.bintray.com/michaelbull/maven' }
     }
 
@@ -24,6 +25,13 @@ allprojects {
 
         compile "com.michael-bull.kotlin-result:kotlin-result:$kotlinResultVersion"
         compile "com.michael-bull.kotlin-inline-logger:kotlin-inline-logger-jvm:$kinlineVersion"
+
+        compile "com.github.Tomm0017:rsmod-cache:$rsmodCacheVersion"
+        compile "com.github.Tomm0017:osrs-cache:$osrsCacheVersion"
+
+        compile "com.github.uchuhimo:konf:$konfVersion"
+
+        testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
     }
 
     compileKotlin {

@@ -1,3 +1,4 @@
 dependencies {
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kcoroutineVersion"
+    compile "com.google.inject:guice:$guiceVersion"
 }
