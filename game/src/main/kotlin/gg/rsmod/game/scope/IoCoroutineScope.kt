@@ -1,4 +1,4 @@
-package gg.rsmod.game.coroutine
+package gg.rsmod.game.scope
 
 import com.google.inject.Inject
 import com.google.inject.name.Named
@@ -8,6 +8,6 @@ import kotlinx.coroutines.CoroutineScope
 /**
  * @author Tom
  */
-class GameCoroutineScope @Inject constructor(
-    @Named("gameCoroutineDispatcher") override val coroutineContext: CoroutineDispatcher
+class IoCoroutineScope @Inject constructor(
+    @Named("ioCoroutineDispatcher") override val coroutineContext: CoroutineDispatcher
 ) : CoroutineScope

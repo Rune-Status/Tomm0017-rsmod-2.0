@@ -1,8 +1,8 @@
-package gg.rsmod.game
+package gg.rsmod
 
 import com.google.inject.Inject
-import gg.rsmod.game.coroutine.GameCoroutineScope
-import gg.rsmod.game.coroutine.IoCoroutineScope
+import gg.rsmod.game.scope.GameCoroutineScope
+import gg.rsmod.game.scope.IoCoroutineScope
 
 /**
  * @author Tom

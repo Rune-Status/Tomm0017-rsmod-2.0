@@ -1,6 +1,8 @@
 package gg.rsmod.game
 
 import com.google.inject.Guice
+import gg.rsmod.Server
+import gg.rsmod.ServerModule
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
