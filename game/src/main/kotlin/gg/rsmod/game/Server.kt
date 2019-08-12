@@ -1,13 +1,15 @@
 package gg.rsmod.game
 
-import kotlinx.coroutines.Dispatchers
+import com.google.inject.Inject
+import gg.rsmod.game.coroutine.GameCoroutineScope
+import gg.rsmod.game.coroutine.IoCoroutineScope
 
 /**
- * @author Tom <rspsmods@gmail.com>
+ * @author Tom
  */
-class Server {
+class Server @Inject constructor(
+    val ioCoroutineScope: IoCoroutineScope,
+    val gameCoroutineScope: GameCoroutineScope
+) {
 
-    val ioDispatcher = Dispatchers.IO
-
-    val gameDispatcher = Dispatchers.Default
 }
