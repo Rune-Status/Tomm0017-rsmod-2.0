@@ -11,9 +11,13 @@ import kotlinx.coroutines.Dispatchers
 internal class ServerModule : AbstractModule() {
 
     override fun configure() {
-        bind(CoroutineDispatcher::class.java).annotatedWith(Names.named("gameCoroutineDispatcher")).toInstance(Dispatchers.Default)
-        bind(CoroutineDispatcher::class.java).annotatedWith(Names.named("ioCoroutineDispatcher")).toInstance(Dispatchers.IO)
+        bindInstance(CoroutineDispatcher::class.java, Dispatchers.Default, Names.named("gameCoroutineDispatcher"))
+        bindInstance(CoroutineDispatcher::class.java, Dispatchers.IO, Names.named("ioCoroutineDispatcher"))
     }
 
-    private inline fun <reified T> bind(type: T) = bind(T::class.java) to type
+    private inline fun <reified T> bindInstance(type: T) =
+        bind(T::class.java).toInstance(type)
+
+    private inline fun <reified K, reified T : K> bindInstance(clazz: Class<K>, type: T, annotation: Annotation) =
+        bind(clazz).annotatedWith(annotation).toInstance(type)
 }
