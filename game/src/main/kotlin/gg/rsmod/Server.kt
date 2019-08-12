@@ -8,8 +8,8 @@ import gg.rsmod.game.scope.IoCoroutineScope
  * @author Tom
  */
 class Server @Inject constructor(
-    val ioCoroutineScope: IoCoroutineScope,
-    val gameCoroutineScope: GameCoroutineScope
+    val gameCoroutineScope: GameCoroutineScope,
+    val ioCoroutineScope: IoCoroutineScope
 ) {
 
 }
