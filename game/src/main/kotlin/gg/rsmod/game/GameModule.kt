@@ -1,4 +1,4 @@
-package gg.rsmod
+package gg.rsmod.game
 
 import com.google.inject.AbstractModule
 import com.google.inject.name.Names
@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 /**
  * @author Tom
  */
-internal class ServerModule : AbstractModule() {
+internal class GameModule : AbstractModule() {
 
     override fun configure() {
         bindInstance(CoroutineDispatcher::class.java, Names.named("gameCoroutineDispatcher"), Dispatchers.Default)
