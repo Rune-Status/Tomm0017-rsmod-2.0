@@ -1,4 +1,5 @@
 dependencies {
+    compile "org.jetbrains.kotlin:kotlin-scripting-common:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-script-runtime:$kotlinVersion"
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kcoroutineVersion"
-    compile "com.google.inject:guice:$guiceVersion"
 }
