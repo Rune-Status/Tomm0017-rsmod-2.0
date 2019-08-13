@@ -2,8 +2,8 @@ package gg.rsmod.game.plugin
 
 import com.github.michaelbull.result.get
 import com.github.michaelbull.result.getError
-import gg.rsmod.game.event.action.ActionEvent
-import gg.rsmod.game.event.message.ApproachNpc
+import gg.rsmod.game.event.ActionEvent
+import gg.rsmod.game.event.impl.ApproachNpc
 import gg.rsmod.game.model.npc.Npc
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

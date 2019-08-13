@@ -1,6 +1,4 @@
-package gg.rsmod.game.event.action
-
-import gg.rsmod.game.event.Event
+package gg.rsmod.game.event
 
 /**
  * @author Tom
