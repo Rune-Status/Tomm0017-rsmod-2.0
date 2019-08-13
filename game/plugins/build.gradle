@@ -1,3 +1,23 @@
+gradle.projectsEvaluated {
+    configure(subprojects.findAll { it.buildFile.exists() }) { subproj ->
+        apply from: "$rootDir/gradle/kotlin.gradle"
+
+        sourceSets {
+            main {
+                kotlin {
+                    srcDirs += "src"
+                }
+            }
+
+            test {
+                kotlin {
+                    srcDirs += "test"
+                }
+            }
+        }
+    }
+}
+
 dependencies {
     implementation project(':game')
 }

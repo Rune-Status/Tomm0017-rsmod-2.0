@@ -1,3 +1,38 @@
+import java.nio.file.Files
+import java.nio.file.Paths
+
 rootProject.name = 'rsmod'
 include ':game'
 include ':game:plugins'
+
+/*
+ * Credits to Apollo (https://github.com/apollo-rsps/apollo/blob/kotlin-experiments/settings.gradle)
+ * for the following code.
+ */
+
+def pluginsDir = [ rootProject.projectDir.toPath().resolve("game/plugins") ]
+
+def includePluginProject(java.nio.file.Path pluginPath) {
+    assert Files.exists(pluginPath)
+
+    def fileFinder = new FileNameFinder()
+    def files = fileFinder.getFileNames(pluginPath.toString(), "**/*.gradle")
+
+    files.each { name ->
+        def filePath = Paths.get(name)
+        def parent = filePath.parent
+
+        if (parent == pluginPath) {
+            return
+        }
+
+        def relativePath = pluginPath.relativize(parent)
+        def pluginName = relativePath()
+
+        include ":game:plugins:$pluginName"
+    }
+}
+
+pluginsDir.each {
+    includePluginProject(it)
+}
