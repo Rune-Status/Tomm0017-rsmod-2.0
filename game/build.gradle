@@ -1,5 +1,12 @@
 dependencies {
+    runtimeClasspath project(":game:plugins")
+
     compile "org.jetbrains.kotlin:kotlin-scripting-common:$kotlinVersion"
     compile "org.jetbrains.kotlin:kotlin-script-runtime:$kotlinVersion"
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kcoroutineVersion"
+}
+
+sourceSets {
+    main.kotlin.srcDirs = ['src/main/kotlin']
+    main.resources.srcDirs = ['src/main/resources']
 }

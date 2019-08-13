@@ -5,7 +5,7 @@ import com.google.inject.AbstractModule
 import com.google.inject.name.Names
 import gg.rsmod.cache.FileSystem
 import gg.rsmod.cache.osrs.buildOsrs
-import gg.rsmod.game.plugin.PluginSet
+import gg.rsmod.game.plugin.PluginEnvironment
 import gg.rsmod.game.type.objtype.ObjTypeList
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +21,7 @@ internal class GameModule : AbstractModule() {
 
         FileSystem.buildOsrs("../data/js5").mapBoth(::configureFileSystem, ::error)
 
-        bind<PluginSet>()
+        bind<PluginEnvironment>()
     }
 
     private fun configureFileSystem(fileSystem: FileSystem) {
