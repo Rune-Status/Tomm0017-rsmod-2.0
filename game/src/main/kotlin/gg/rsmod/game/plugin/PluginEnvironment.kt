@@ -15,10 +15,9 @@ class PluginEnvironment @Inject constructor(
 ) {
 
     inline fun <reified T : Event> trigger(event: T): Result<List<ActionEvent<T>>, PluginTriggerMessage> {
-        val events = getEvents<T>() ?: return Err(PluginEventTypeNotFound)
-        val filteredEvents = events.filter { it.where(event) }
-        filteredEvents.forEach { it.then(event) }
-        return Ok(filteredEvents)
+        val events = getEvents<T>()?.filter { it.where(event) } ?: return Err(PluginEventTypeNotFound)
+        events.forEach { it.then(event) }
+        return Ok(events)
     }
 
     @Suppress("UNCHECKED_CAST")
