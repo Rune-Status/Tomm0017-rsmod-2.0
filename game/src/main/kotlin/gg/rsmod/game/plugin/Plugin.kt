@@ -1,12 +1,12 @@
 package gg.rsmod.game.plugin
 
+import gg.rsmod.game.event.ActionEvent
 import gg.rsmod.game.event.Event
-import gg.rsmod.game.event.action.ActionEvent
 
 /**
  * @author Tom
  */
-abstract class Plugin {
+open class Plugin {
 
     val events = mutableListOf<ActionEvent<*>>()
 

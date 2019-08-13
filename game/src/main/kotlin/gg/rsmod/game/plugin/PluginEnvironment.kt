@@ -4,8 +4,8 @@ import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
 import com.google.inject.Inject
+import gg.rsmod.game.event.ActionEvent
 import gg.rsmod.game.event.Event
-import gg.rsmod.game.event.action.ActionEvent
 
 /**
  * @author Tom
