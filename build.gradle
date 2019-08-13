@@ -19,6 +19,9 @@ allprojects {
 
     dependencies {
         compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+        compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kcoroutineVersion"
+
+        compile "com.google.inject:guice:$guiceVersion"
 
         compile "org.slf4j:slf4j-api:$slf4jVersion"
         compile "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
