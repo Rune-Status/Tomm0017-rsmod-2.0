@@ -1,5 +1,6 @@
 import java.nio.file.Files
 import java.nio.file.Paths
+import java.nio.file.Path
 
 rootProject.name = 'rsmod'
 include ':game'
@@ -12,7 +13,7 @@ include ':game:plugins'
 
 def pluginsDir = [ rootProject.projectDir.toPath().resolve("game/plugins") ]
 
-def includePluginProject(java.nio.file.Path pluginPath) {
+def includePluginProject(Path pluginPath) {
     assert Files.exists(pluginPath)
 
     def fileFinder = new FileNameFinder()
@@ -27,7 +28,7 @@ def includePluginProject(java.nio.file.Path pluginPath) {
         }
 
         def relativePath = pluginPath.relativize(parent)
-        def pluginName = relativePath()
+        def pluginName = relativePath.toString().replace(File.separator, ":")
 
         include ":game:plugins:$pluginName"
     }

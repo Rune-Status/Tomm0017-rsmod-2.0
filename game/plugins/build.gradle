@@ -1,7 +1,5 @@
 gradle.projectsEvaluated {
     configure(subprojects.findAll { it.buildFile.exists() }) { subproj ->
-        apply from: "$rootDir/gradle/kotlin.gradle"
-
         sourceSets {
             main {
                 kotlin {
