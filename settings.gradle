@@ -17,7 +17,7 @@ def includePluginProject(Path pluginPath) {
     assert Files.exists(pluginPath)
 
     def fileFinder = new FileNameFinder()
-    def files = fileFinder.getFileNames(pluginPath.toString(), "**/*.gradle.kts")
+    def files = fileFinder.getFileNames(pluginPath.toString(), "**/*.gradle")
 
     files.each { name ->
         def filePath = Paths.get(name)
