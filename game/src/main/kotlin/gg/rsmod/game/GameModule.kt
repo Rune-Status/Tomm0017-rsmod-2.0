@@ -2,12 +2,15 @@ package gg.rsmod.game
 
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.andThen
+import com.github.michaelbull.result.get
 import com.github.michaelbull.result.mapError
 import com.google.inject.AbstractModule
 import com.google.inject.name.Names
 import gg.rsmod.cache.FileSystem
 import gg.rsmod.cache.osrs.buildOsrs
 import gg.rsmod.game.plugin.PluginEnvironment
+import gg.rsmod.game.plugin.PluginLoader
+import gg.rsmod.game.plugin.kotlinscript.KotlinPluginLoader
 import gg.rsmod.game.type.objtype.ObjTypeList
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +26,7 @@ internal class GameModule : AbstractModule() {
         bindInstance(CoroutineDispatcher::class.java, Names.named("ioCoroutineDispatcher"), Dispatchers.IO)
 
         // Bind file system instances.
-        FileSystem.buildOsrs("../data/js5")
+        FileSystem.buildOsrs("./data/js5")
             .mapError { error(it) }
             .andThen { fileSystem ->
                 bindInstance(FileSystem::class.java, fileSystem)
@@ -32,7 +35,9 @@ internal class GameModule : AbstractModule() {
         bind<ObjTypeList>()
 
         // Bind plugin instances.
-        bindInstance(PluginEnvironment(emptyMap()))
+        val pluginLoader = KotlinPluginLoader()
+        bindInstance(PluginLoader::class.java, pluginLoader)
+        bindInstance(PluginEnvironment(pluginLoader.loadAsMap().get()!!))
     }
 
     private inline fun <reified T> bind() = bind(T::class.java)
