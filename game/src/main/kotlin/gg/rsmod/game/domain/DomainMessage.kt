@@ -6,6 +6,3 @@ sealed class PluginTriggerMessage {
      */
     object EventTypeNotFound : PluginTriggerMessage()
 }
-
-sealed class PluginLoaderMessage(private val reason: String) {
-}

@@ -2,7 +2,6 @@ package gg.rsmod.game
 
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.andThen
-import com.github.michaelbull.result.get
 import com.github.michaelbull.result.mapError
 import com.google.inject.AbstractModule
 import com.google.inject.name.Names
@@ -37,7 +36,7 @@ internal class GameModule : AbstractModule() {
         // Bind plugin instances.
         val pluginLoader = KotlinPluginLoader()
         bindInstance(PluginLoader::class.java, pluginLoader)
-        bindInstance(PluginEnvironment(pluginLoader.loadAsMap().get()!!))
+        bindInstance(PluginEnvironment(pluginLoader.loadAsMap()))
     }
 
     private inline fun <reified T> bind() = bind(T::class.java)

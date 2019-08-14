@@ -1,8 +1,5 @@
 package gg.rsmod.game.plugin.kotlinscript
 
-import com.github.michaelbull.result.Ok
-import com.github.michaelbull.result.Result
-import gg.rsmod.game.domain.PluginLoaderMessage
 import gg.rsmod.game.plugin.PluginLoader
 import io.github.classgraph.ClassGraph
 
@@ -11,7 +8,7 @@ import io.github.classgraph.ClassGraph
  */
 class KotlinPluginLoader : PluginLoader<KotlinPlugin> {
 
-    override fun load(): Result<Collection<KotlinPlugin>, PluginLoaderMessage> {
+    override fun load(): Collection<KotlinPlugin> {
         val plugins = mutableListOf<KotlinPlugin>()
 
         val classGraph = ClassGraph().enableAllInfo()
@@ -25,6 +22,6 @@ class KotlinPluginLoader : PluginLoader<KotlinPlugin> {
             }
         }
 
-        return Ok(plugins)
+        return plugins
     }
 }
