@@ -9,7 +9,7 @@ import kotlin.reflect.KClass
  */
 open class Plugin {
 
-    val events = mutableMapOf<KClass<*>, MutableList<Action<*>>>()
+    val events = mutableMapOf<KClass<out Event>, MutableList<Action<*>>>()
 
     inline fun <reified T : Event> on(): EventBuilder<T> = EventBuilder(events.computeIfAbsent(T::class) { mutableListOf() })
 
