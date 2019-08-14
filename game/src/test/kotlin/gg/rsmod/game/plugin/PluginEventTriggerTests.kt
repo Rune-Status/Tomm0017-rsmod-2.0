@@ -1,10 +1,7 @@
 package gg.rsmod.game.plugin
 
-import com.github.michaelbull.result.get
-import com.github.michaelbull.result.getError
 import gg.rsmod.game.action.Action
 import gg.rsmod.game.event.Event
-import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertSame
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -22,9 +19,7 @@ class PluginEventTriggerTests {
         ))
 
         val triggered = environment.trigger(TestEvent())
-        assertNull(triggered.getError())
-
-        assertSame(1, triggered.get()?.size ?: -1)
+        assertSame(1, triggered.size)
     }
 
     @Test
@@ -36,9 +31,7 @@ class PluginEventTriggerTests {
         ))
 
         val triggered = environment.trigger(TestEvent())
-        assertNull(triggered.getError())
-
-        assertSame(0, triggered.get()?.size ?: -1)
+        assertSame(0, triggered.size)
     }
 
     @Test
@@ -51,11 +44,10 @@ class PluginEventTriggerTests {
         ))
 
         val triggered = environment.trigger(TestEvent())
-        assertNull(triggered.getError())
 
         // Only `triggerAction` should have been triggered, the other action
         // should have been filtered and not returned by `trigger` result.
-        assertSame(1, triggered.get()?.size ?: -1)
+        assertSame(1, triggered.size)
     }
 
     @Test
