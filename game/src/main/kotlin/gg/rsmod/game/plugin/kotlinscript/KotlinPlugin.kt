@@ -1,4 +1,4 @@
-package gg.rsmod.game.plugin
+package gg.rsmod.game.plugin.kotlinscript
 
 import gg.rsmod.game.plugin.Plugin
 import kotlin.script.experimental.annotations.KotlinScript
