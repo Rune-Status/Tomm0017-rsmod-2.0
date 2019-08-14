@@ -42,7 +42,7 @@ class PluginEventTriggerTests {
     }
 
     @Test
-    fun `trigger an event with two actions, but filter one of said actions`() {
+    fun `trigger event with two actions, but filter one of them`() {
         val triggerAction = Action<TestEvent>({ true }, {})
         val filterAction = Action<TestEvent>({ false }, {})
 
