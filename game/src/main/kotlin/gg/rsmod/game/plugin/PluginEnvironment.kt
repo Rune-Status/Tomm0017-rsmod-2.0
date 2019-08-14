@@ -5,6 +5,7 @@ import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
 import com.google.inject.Inject
 import gg.rsmod.game.action.Action
+import gg.rsmod.game.domain.PluginTriggerMessage
 import gg.rsmod.game.event.Event
 import kotlin.reflect.KClass
 
@@ -16,7 +17,7 @@ class PluginEnvironment @Inject constructor(
 ) {
 
     inline fun <reified T : Event> trigger(event: T): Result<List<Action<T>>, PluginTriggerMessage> {
-        val events = getEvents<T>()?.filter { it.where(event) } ?: return Err(PluginEventTypeNotFound)
+        val events = getEvents<T>()?.filter { it.where(event) } ?: return Err(PluginTriggerMessage.EventTypeNotFound)
         events.forEach { it.then(event) }
         return Ok(events)
     }
