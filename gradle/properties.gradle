@@ -11,4 +11,5 @@ ext {
     rsmodCacheVersion = '0.6.4'
     osrsCacheVersion = '1.0.9'
     fastutilVersion = '8.3.0'
+    classgraphVersion = '4.8.43'
 }

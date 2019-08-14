@@ -7,6 +7,8 @@ dependencies {
 
     compile "com.github.Tomm0017:rsmod-cache:$rsmodCacheVersion"
     compile "com.github.Tomm0017:osrs-cache:$osrsCacheVersion"
+
+    compile "io.github.classgraph:classgraph:$classgraphVersion"
 }
 
 sourceSets {
