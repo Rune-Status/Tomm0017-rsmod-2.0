@@ -8,6 +8,7 @@ import gg.rsmod.game.model.npc.Npc
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import kotlin.reflect.KClass
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class EventTests {
@@ -23,7 +24,7 @@ class EventTests {
         val badEvent = ActionEvent<ApproachNpc>({ target.name == "bad" }, { })
         assertFalse(badEvent.where(event))
 
-        val environment = PluginEnvironment(mapOf<Class<*>, List<ActionEvent<*>>>(ApproachNpc::class.java to listOf(goodEvent, badEvent)))
+        val environment = PluginEnvironment(mapOf<KClass<*>, List<ActionEvent<*>>>(ApproachNpc::class to listOf(goodEvent, badEvent)))
 
         val result = environment.trigger(event)
         assertNull(result.getError())
