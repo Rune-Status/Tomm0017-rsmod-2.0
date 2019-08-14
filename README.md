@@ -2,7 +2,7 @@
 This project is a predecessor to https://github.com/Tomm0017/rsmod.
 
 RS Mod has the goal of being modular server where developers can easily
-create, or remove, content or even extend existing content.
+create, remove or even extend existing content.
 
 ## Why is this v2.0?
 There was a lot of feedback received when RS Mod was made public, and I highly 
