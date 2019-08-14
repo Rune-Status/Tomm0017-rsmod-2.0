@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
  * @author Tom
  */
 class PluginEnvironment @Inject constructor(
-    val actionEvents: Map<KClass<*>, List<Action<*>>>
+    val actionEvents: Map<KClass<out Event>, List<Action<*>>>
 ) {
 
     inline fun <reified T : Event> trigger(event: T): Result<List<Action<T>>, PluginTriggerMessage> {
@@ -23,5 +23,5 @@ class PluginEnvironment @Inject constructor(
     }
 
     @Suppress("UNCHECKED_CAST")
-    inline fun <reified T> getEvents(): List<Action<T>>? = actionEvents[T::class] as? List<Action<T>>
+    inline fun <reified T : Event> getEvents(): List<Action<T>>? = actionEvents[T::class] as? List<Action<T>>
 }
