@@ -1,7 +1,7 @@
-## What is RS Mod 2.0?
+## What is RS Mod v2.0?
 This project is a predecessor to https://github.com/Tomm0017/rsmod.
 
-RS Mod has the goal of being modular server where developers can easily
+RS Mod has the goal of being a modular server where developers can easily
 create, remove or even extend existing content.
 
 ## Why is this v2.0?
