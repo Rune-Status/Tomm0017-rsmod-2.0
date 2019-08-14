@@ -2,9 +2,8 @@ package gg.rsmod.game.plugin
 
 import com.github.michaelbull.result.get
 import com.github.michaelbull.result.getError
-import gg.rsmod.game.event.ActionEvent
+import gg.rsmod.game.action.Action
 import gg.rsmod.game.event.Event
-import gg.rsmod.game.model.npc.Npc
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -13,24 +12,23 @@ import org.junit.jupiter.api.TestInstance
 class EventTests {
 
     @Test
-    fun `test approach npc`() {
-        val npc = Npc("test")
-        val event = ApproachNpc(npc, "operation")
+    fun `trigger a good ('where' returns true) and bad ('where' returns false) event`() {
+        val event = TestEvent()
 
-        val goodEvent = ActionEvent<ApproachNpc>({ target.name == npc.name }, { })
+        val goodEvent = Action<TestEvent>({ true }, { })
         assertTrue(goodEvent.where(event))
 
-        val badEvent = ActionEvent<ApproachNpc>({ target.name == "bad" }, { })
+        val badEvent = Action<TestEvent>({ false }, { })
         assertFalse(badEvent.where(event))
 
         val environment = PluginEnvironment(mapOf(
-            ApproachNpc::class to listOf(goodEvent, badEvent)
+            TestEvent::class to listOf(goodEvent, badEvent)
         ))
 
         val result = environment.trigger(event)
         assertNull(result.getError())
 
-        val triggeredEvents = result.get() as? List<ActionEvent<*>>
+        val triggeredEvents = result.get() as? List<Action<*>>
         assertNotNull(triggeredEvents)
         triggeredEvents!!
 
@@ -40,5 +38,5 @@ class EventTests {
         assertTrue(triggeredEvents.size == 1)
     }
 
-    private data class ApproachNpc(val target: Npc, val operation: String) : Event
+    private class TestEvent : Event
 }

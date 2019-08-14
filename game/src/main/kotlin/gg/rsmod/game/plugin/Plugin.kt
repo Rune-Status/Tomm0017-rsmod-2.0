@@ -1,6 +1,6 @@
 package gg.rsmod.game.plugin
 
-import gg.rsmod.game.event.ActionEvent
+import gg.rsmod.game.action.Action
 import gg.rsmod.game.event.Event
 
 /**
@@ -8,7 +8,7 @@ import gg.rsmod.game.event.Event
  */
 open class Plugin {
 
-    val events = mutableListOf<ActionEvent<*>>()
+    val events = mutableListOf<Action<*>>()
 
     inline fun <reified T : Event> on(): EventBuilder<T> = EventBuilder(events)
 
@@ -16,7 +16,7 @@ open class Plugin {
     annotation class EventBuilderMarker
 
     @EventBuilderMarker
-    class EventBuilder<T>(private val events: MutableList<ActionEvent<*>>) {
+    class EventBuilder<T>(private val events: MutableList<Action<*>>) {
 
         private var where: (T).() -> Boolean = { true }
 
@@ -29,7 +29,7 @@ open class Plugin {
 
         fun then(then: (T).() -> Any) {
             this.then = then
-            events.add(ActionEvent(where, then))
+            events.add(Action(where, then))
         }
     }
 }
