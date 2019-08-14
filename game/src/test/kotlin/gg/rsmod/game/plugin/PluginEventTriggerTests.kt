@@ -42,6 +42,23 @@ class PluginEventTriggerTests {
     }
 
     @Test
+    fun `trigger an event with two actions, but filter one of said actions`() {
+        val triggerAction = Action<TestEvent>({ true }, {})
+        val filterAction = Action<TestEvent>({ false }, {})
+
+        val environment = PluginEnvironment(mapOf(
+            TestEvent::class to listOf(triggerAction, filterAction)
+        ))
+
+        val triggered = environment.trigger(TestEvent())
+        assertNull(triggered.getError())
+
+        // Only `triggerAction` should have been triggered, the other action
+        // should have been filtered and not returned by `trigger` result.
+        assertSame(1, triggered.get()?.size ?: -1)
+    }
+
+    @Test
     fun `bind and trigger action to wrong event type`() {
         val action = Action<Unit>({ true }, {})
 
