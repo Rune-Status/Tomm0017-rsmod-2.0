@@ -15,14 +15,13 @@ class PluginEventTriggerTests {
 
     @Test
     fun `trigger event`() {
-        val event = TestEvent()
         val action = Action<TestEvent>({ true }, {})
 
         val environment = PluginEnvironment(mapOf(
             TestEvent::class to listOf(action)
         ))
 
-        val triggered = environment.trigger(event)
+        val triggered = environment.trigger(TestEvent())
         assertNull(triggered.getError())
 
         assertSame(1, triggered.get()?.size ?: -1)
@@ -30,14 +29,13 @@ class PluginEventTriggerTests {
 
     @Test
     fun `trigger filtered event`() {
-        val event = TestEvent()
         val action = Action<TestEvent>({ false }, {})
 
         val environment = PluginEnvironment(mapOf(
             TestEvent::class to listOf(action)
         ))
 
-        val triggered = environment.trigger(event)
+        val triggered = environment.trigger(TestEvent())
         assertNull(triggered.getError())
 
         assertSame(0, triggered.get()?.size ?: -1)
