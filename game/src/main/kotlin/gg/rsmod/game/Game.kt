@@ -10,6 +10,4 @@ import gg.rsmod.game.scope.IoCoroutineScope
 class Game @Inject constructor(
     val gameCoroutineScope: GameCoroutineScope,
     val ioCoroutineScope: IoCoroutineScope
-) {
-
-}
+)
