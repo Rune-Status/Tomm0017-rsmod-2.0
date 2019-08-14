@@ -1,6 +1,8 @@
 package gg.rsmod.game
 
-import com.github.michaelbull.result.mapBoth
+import com.github.michaelbull.result.Ok
+import com.github.michaelbull.result.andThen
+import com.github.michaelbull.result.mapError
 import com.google.inject.AbstractModule
 import com.google.inject.name.Names
 import gg.rsmod.cache.FileSystem
@@ -16,17 +18,21 @@ import kotlinx.coroutines.Dispatchers
 internal class GameModule : AbstractModule() {
 
     override fun configure() {
+        // Bind core instances.
         bindInstance(CoroutineDispatcher::class.java, Names.named("gameCoroutineDispatcher"), Dispatchers.Default)
         bindInstance(CoroutineDispatcher::class.java, Names.named("ioCoroutineDispatcher"), Dispatchers.IO)
 
-        FileSystem.buildOsrs("../data/js5").mapBoth(::configureFileSystem, ::error)
-
-        bind<PluginEnvironment>()
-    }
-
-    private fun configureFileSystem(fileSystem: FileSystem) {
-        bindInstance(FileSystem::class.java, fileSystem)
+        // Bind file system instances.
+        FileSystem.buildOsrs("../data/js5")
+            .mapError { error(it) }
+            .andThen { fileSystem ->
+                bindInstance(FileSystem::class.java, fileSystem)
+                Ok(Unit)
+            }
         bind<ObjTypeList>()
+
+        // Bind plugin instances.
+        bindInstance(PluginEnvironment(emptyMap()))
     }
 
     private inline fun <reified T> bind() = bind(T::class.java)
