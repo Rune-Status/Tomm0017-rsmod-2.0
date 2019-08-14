@@ -9,6 +9,6 @@ ext {
     log4jVersion = '2.11.2'
     guiceVersion = '4.2.2'
     rsmodCacheVersion = '0.6.4'
-    osrsCacheVersion = '1.0.0'
-    konfVersion = 'master-SNAPSHOT'
+    osrsCacheVersion = '1.0.9'
+    fastutilVersion = '8.3.0'
 }

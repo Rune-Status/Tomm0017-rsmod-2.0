@@ -3,6 +3,7 @@ import java.nio.file.Paths
 import java.nio.file.Path
 
 rootProject.name = 'rsmod'
+include ':util'
 include ':game'
 include ':game:plugins'
 
@@ -17,7 +18,7 @@ def includePluginProject(Path pluginPath) {
     assert Files.exists(pluginPath)
 
     def fileFinder = new FileNameFinder()
-    def files = fileFinder.getFileNames(pluginPath.toString(), "**/*.gradle")
+    def files = fileFinder.getFileNames(pluginPath.toString(), "**/*.gradle.kts")
 
     files.each { name ->
         def filePath = Paths.get(name)

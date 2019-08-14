@@ -29,10 +29,9 @@ allprojects {
         compile "com.michael-bull.kotlin-result:kotlin-result:$kotlinResultVersion"
         compile "com.michael-bull.kotlin-inline-logger:kotlin-inline-logger-jvm:$kinlineVersion"
 
-        compile "com.github.Tomm0017:rsmod-cache:$rsmodCacheVersion"
-        compile "com.github.Tomm0017:osrs-cache:$osrsCacheVersion"
-
-        compile "com.github.uchuhimo:konf:$konfVersion"
+        compile "it.unimi.dsi:fastutil:$fastutilVersion"
+        compile "com.fasterxml.jackson.core:jackson-databind:2.9.9"
+        compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.9"
 
         testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
     }
