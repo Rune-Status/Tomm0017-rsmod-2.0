@@ -1,8 +1,11 @@
 package gg.rsmod.game.domain
 
-sealed class PluginTriggerMessage(private val reason: String) {
+sealed class PluginTriggerMessage {
+    /**
+     * The plugin event type did not have any actions bound to it.
+     */
+    object EventTypeNotFound : PluginTriggerMessage()
+}
 
-    override fun toString(): String = reason
-
-    object EventTypeNotFound : PluginTriggerMessage("Plugin event type not found")
+sealed class PluginLoaderMessage(private val reason: String) {
 }
