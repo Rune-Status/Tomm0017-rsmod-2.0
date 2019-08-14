@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertSame
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.assertThrows
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class PluginEventTriggerTests {
@@ -40,6 +41,20 @@ class PluginEventTriggerTests {
         assertNull(triggered.getError())
 
         assertSame(0, triggered.get()?.size ?: -1)
+    }
+
+    @Test
+    fun `bind and trigger action from wrong event type`() {
+        val action = Action<Unit>({ true }, {})
+
+        val environment = PluginEnvironment(mapOf(
+            TestEvent::class to listOf(action)
+        ))
+
+        // `action` uses `Unit` as its type, yet we used `TestEvent::class`
+        // as its key when adding it to our `PluginEnvironment`. This leads
+        // to a cast exception when trying to trigger the event.
+        assertThrows<ClassCastException> { environment.trigger(TestEvent()) }
     }
 
     private class TestEvent : Event
