@@ -42,7 +42,7 @@ class PluginEventTriggerTests {
     }
 
     @Test
-    fun `bind and trigger action from wrong event type`() {
+    fun `bind and trigger action to wrong event type`() {
         val action = Action<Unit>({ true }, {})
 
         val environment = PluginEnvironment(mapOf(
