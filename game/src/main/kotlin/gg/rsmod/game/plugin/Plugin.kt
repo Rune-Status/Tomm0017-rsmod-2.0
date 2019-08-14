@@ -21,14 +21,14 @@ open class Plugin {
 
         private var where: (T).() -> Boolean = { true }
 
-        private lateinit var then: (T).() -> Any
+        private lateinit var then: (T).() -> Unit
 
         fun where(where: (T).() -> Boolean): EventBuilder<T> {
             this.where = where
             return this
         }
 
-        fun then(then: (T).() -> Any) {
+        fun then(then: (T).() -> Unit) {
             this.then = then
             events.add(Action(where, then))
         }

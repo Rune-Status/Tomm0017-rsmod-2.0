@@ -5,5 +5,5 @@ package gg.rsmod.game.action
  */
 class Action<T>(
     val where: (T).() -> Boolean,
-    val then: (T).() -> Any
+    val then: (T).() -> Unit
 )
