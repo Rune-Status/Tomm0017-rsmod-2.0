@@ -22,6 +22,10 @@ pre-release stages).
 
 At the end of the day, I'm not only trying to contribute back to a community I 
 feel I owe a debt to, but also trying to learn and improve myself along the way.
+On top of that, one of the criticisms received was that if the server was made
+for education purposes that it should teach others the "correct" way of doing 
+things (or at least a better way), so I felt it was necessary to make these 
+changes.
 
 After weighing out the pros and cons of this new 'version' of RS Mod, I without
 a doubt thought this was the best decision. I apologize to whoever doesn't feel 
