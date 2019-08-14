@@ -47,6 +47,9 @@ developers when RS Mod was made public. Some things include:
     - For example: Obj (item), Loc (object), packet names, etc
 - Type-safe packet definitions
     - RS Mod v1.0 uses yaml without type-safety for packet classes
+- Getting rid of the ugly `PluginRepository` 
+    - It was a sad attempt at perf improvement (by trying to be one-to-one)
+    over an actual pub-sub system
 
 This version of the project will not have all these features made to perfection 
 from the start. A lot of these ideas are something that will be criticised and
