@@ -11,7 +11,9 @@ dependencies {
     compile "io.github.classgraph:classgraph:$classgraphVersion"
 
     project(":game:plugins").subprojects { pluginProject ->
-        runtimeClasspath pluginProject
+        if (pluginProject.buildFile.exists()) {
+            runtimeClasspath pluginProject
+        }
     }
 }
 
