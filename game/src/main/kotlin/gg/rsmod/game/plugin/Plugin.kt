@@ -11,7 +11,8 @@ open class Plugin {
 
     val events = mutableMapOf<KClass<out Event>, MutableList<Action<*>>>()
 
-    inline fun <reified T : Event> on(): EventBuilder<T> = EventBuilder(events.computeIfAbsent(T::class) { mutableListOf() })
+    inline fun <reified T : Event> on(): EventBuilder<T> =
+        EventBuilder(events.computeIfAbsent(T::class) { mutableListOf() })
 
     @DslMarker
     annotation class EventBuilderMarker
