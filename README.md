@@ -1,5 +1,5 @@
 ## What is RS Mod v2.0?
-This project is a predecessor to https://github.com/Tomm0017/rsmod.
+This project is a predecessor to https://github.com/Tomm0017/rsmod
 
 RS Mod has the goal of being a modular server where developers can easily
 create, remove or even extend existing content.
@@ -50,6 +50,10 @@ developers when RS Mod was made public. Some things include:
 - Getting rid of the ugly `PluginRepository` 
     - It was a sad attempt at perf improvement (by trying to be one-to-one)
     over an actual pub-sub system
+- Config files for Types ('definitions')
+    - Instead of having the idea of 'cache editors', one of the milestones
+    for this project is to pack and unpack (practical) Types through config
+    files
 
 This version of the project will not have all these features made to perfection 
 from the start. A lot of these ideas are something that will be criticised and
