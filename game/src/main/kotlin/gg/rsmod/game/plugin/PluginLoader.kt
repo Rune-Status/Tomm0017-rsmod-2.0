@@ -5,15 +5,27 @@ import gg.rsmod.game.event.Event
 import kotlin.reflect.KClass
 
 /**
+ * Base class that is responsible for loading [Plugin]s.
+ *
+ * @param T the type of [Plugin] that this loader is responsible
+ * for fetching.
+ *
  * @author Tom
  */
 interface PluginLoader<T : Plugin> {
 
-    fun load(): Collection<T>
+    /**
+     * Get a collection of [Plugin]s.
+     */
+    fun getPlugins(): Collection<T>
 
-    fun loadAsMap(): Map<KClass<out Event>, List<Action<*>>> {
-        val plugins = load()
+    /**
+     * Get the collection of [Plugin]s and return a map of all every [Action]
+     * mapped by their respective [Event] type.
+     */
+    fun getMappedPlugins(): Map<KClass<out Event>, List<Action<*>>> {
         val map = mutableMapOf<KClass<out Event>, MutableList<Action<*>>>()
+        val plugins = getPlugins()
         plugins.forEach { plugin ->
             plugin.events.forEach { (type, actions) ->
                 // Get or create the list of actions tied to the type

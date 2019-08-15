@@ -36,7 +36,7 @@ internal class GameModule : AbstractModule() {
         // Bind plugin instances.
         val pluginLoader = KotlinPluginLoader()
         bindInstance(PluginLoader::class.java, pluginLoader)
-        bindInstance(PluginEnvironment(pluginLoader.loadAsMap()))
+        bindInstance(PluginEnvironment(pluginLoader.getMappedPlugins()))
     }
 
     private inline fun <reified T> bind() = bind(T::class.java)

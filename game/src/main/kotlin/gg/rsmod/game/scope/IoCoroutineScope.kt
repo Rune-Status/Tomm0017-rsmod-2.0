@@ -6,6 +6,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 
 /**
+ * A [CoroutineScope] where all IO jobs should be launched.
+ *
  * @author Tom
  */
 class IoCoroutineScope @Inject constructor(

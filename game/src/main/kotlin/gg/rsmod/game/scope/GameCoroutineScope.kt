@@ -6,6 +6,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 
 /**
+ * A [CoroutineScope] where all game-thread jobs should be launched.
+ *
  * @author Tom
  */
 class GameCoroutineScope @Inject constructor(
