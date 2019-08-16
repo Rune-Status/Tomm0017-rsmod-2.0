@@ -8,7 +8,7 @@ ext {
     slf4jVersion = '1.7.25'
     log4jVersion = '2.11.2'
     guiceVersion = '4.2.2'
-    rsmodCacheVersion = '0.6.4'
+    rsmodCacheVersion = '0.6.6'
     osrsCacheVersion = '1.0.9'
     fastutilVersion = '8.3.0'
     classgraphVersion = '4.8.43'
