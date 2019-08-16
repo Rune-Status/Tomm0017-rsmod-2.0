@@ -11,7 +11,7 @@ include ':game:plugins'
  * for the following code.
  */
 
-def pluginsDir = [ rootProject.projectDir.toPath().resolve("game/plugins") ]
+def pluginsDir = [rootProject.projectDir.toPath().resolve("game/plugins")]
 
 def includePluginProject(Path pluginPath) {
     assert Files.exists(pluginPath)
