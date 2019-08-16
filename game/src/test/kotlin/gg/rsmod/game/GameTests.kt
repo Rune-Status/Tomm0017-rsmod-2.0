@@ -11,9 +11,9 @@ class GameTests {
     @Test
     fun `construct with dependency injection`() {
         val module = TestModule()
-        val guice = Guice.createInjector(module)
+        val injector = Guice.createInjector(module)
 
-        val game = guice.getInstance(Game::class.java)
+        val game = injector.getInstance(Game::class.java)
         assertNotNull(game)
     }
 }
