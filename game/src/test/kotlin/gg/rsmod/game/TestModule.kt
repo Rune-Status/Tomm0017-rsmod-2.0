@@ -7,17 +7,16 @@ import com.google.inject.AbstractModule
 import com.google.inject.name.Names
 import gg.rsmod.cache.FileSystem
 import gg.rsmod.cache.osrs.buildOsrs
-import gg.rsmod.game.plugin.PluginEnvironment
+import gg.rsmod.game.model.obj.ObjTypeList
 import gg.rsmod.game.plugin.PluginLoader
 import gg.rsmod.game.plugin.kotlinscript.KotlinPluginLoader
-import gg.rsmod.game.type.objtype.ObjTypeList
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
 /**
  * @author Tom
  */
-internal class TestModule : AbstractModule() {
+class TestModule : AbstractModule() {
 
     override fun configure() {
         // Bind core instances.
@@ -34,9 +33,7 @@ internal class TestModule : AbstractModule() {
         bind<ObjTypeList>()
 
         // Bind plugin instances.
-        val pluginLoader = KotlinPluginLoader()
-        bindInstance(PluginLoader::class.java, pluginLoader)
-        bindInstance(PluginEnvironment(pluginLoader.getMappedPlugins()))
+        bindInstance(PluginLoader::class.java, KotlinPluginLoader())
     }
 
     private inline fun <reified T> bind() = bind(T::class.java)

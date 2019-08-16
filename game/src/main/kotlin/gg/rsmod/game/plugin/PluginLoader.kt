@@ -1,5 +1,6 @@
 package gg.rsmod.game.plugin
 
+import com.google.inject.Injector
 import gg.rsmod.game.action.Action
 import gg.rsmod.game.event.Event
 import kotlin.reflect.KClass
@@ -17,15 +18,15 @@ interface PluginLoader<T : Plugin> {
     /**
      * Get a collection of [Plugin]s.
      */
-    fun getPlugins(): Collection<T>
+    fun getPlugins(injector: Injector): Collection<T>
 
     /**
      * Get the collection of [Plugin]s and return a map of all every [Action]
      * mapped by their respective [Event] type.
      */
-    fun getMappedPlugins(): Map<KClass<out Event>, List<Action<*>>> {
+    fun getMappedPlugins(injector: Injector): Map<KClass<out Event>, List<Action<*>>> {
         val map = mutableMapOf<KClass<out Event>, MutableList<Action<*>>>()
-        val plugins = getPlugins()
+        val plugins = getPlugins(injector)
         plugins.forEach { plugin ->
             plugin.events.forEach { (type, actions) ->
                 // Get or create the list of actions tied to the type

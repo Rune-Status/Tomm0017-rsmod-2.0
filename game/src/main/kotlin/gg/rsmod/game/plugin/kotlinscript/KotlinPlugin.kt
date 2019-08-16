@@ -1,5 +1,7 @@
 package gg.rsmod.game.plugin.kotlinscript
 
+import com.google.inject.Inject
+import com.google.inject.Injector
 import gg.rsmod.game.plugin.Plugin
 import kotlin.script.experimental.annotations.KotlinScript
 
@@ -12,4 +14,6 @@ import kotlin.script.experimental.annotations.KotlinScript
     displayName = "KotlinScript Plugin",
     fileExtension = "plugin.kts"
 )
-abstract class KotlinPlugin : Plugin()
+abstract class KotlinPlugin @Inject constructor(
+    injector: Injector
+) : Plugin(injector)

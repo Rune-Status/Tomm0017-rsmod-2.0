@@ -1,5 +1,6 @@
 package gg.rsmod.game.plugin.kotlinscript
 
+import com.google.inject.Injector
 import gg.rsmod.game.plugin.PluginLoader
 import io.github.classgraph.ClassGraph
 
@@ -10,7 +11,7 @@ import io.github.classgraph.ClassGraph
  */
 class KotlinPluginLoader : PluginLoader<KotlinPlugin> {
 
-    override fun getPlugins(): Collection<KotlinPlugin> {
+    override fun getPlugins(injector: Injector): Collection<KotlinPlugin> {
         val plugins = mutableListOf<KotlinPlugin>()
 
         val classGraph = ClassGraph().enableAllInfo()
@@ -18,8 +19,8 @@ class KotlinPluginLoader : PluginLoader<KotlinPlugin> {
             val subclasses = result.getSubclasses(KotlinPlugin::class.java.name).directOnly()
             subclasses.forEach { subclass ->
                 val pluginClass = subclass.loadClass(KotlinPlugin::class.java)
-                val pluginConstructor = pluginClass.getConstructor()
-                plugins.add(pluginConstructor.newInstance())
+                val pluginConstructor = pluginClass.getConstructor(Injector::class.java)
+                plugins.add(pluginConstructor.newInstance(injector))
             }
         }
 
