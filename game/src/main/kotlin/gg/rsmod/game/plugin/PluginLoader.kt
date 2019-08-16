@@ -17,12 +17,18 @@ interface PluginLoader<T : Plugin> {
 
     /**
      * Get a collection of [Plugin]s.
+     *
+     * @param injector the [Injector] to pass along to [Plugin]s that
+     * can allow them to access injected values.
      */
     fun getPlugins(injector: Injector): Collection<T>
 
     /**
      * Get the collection of [Plugin]s and return a map of all every [Action]
      * mapped by their respective [Event] type.
+     *
+     * @param injector the [Injector] to pass along to [Plugin]s that
+     * can allow them to access injected values.
      */
     fun getMappedPlugins(injector: Injector): Map<KClass<out Event>, List<Action<*>>> {
         val map = mutableMapOf<KClass<out Event>, MutableList<Action<*>>>()
