@@ -32,7 +32,7 @@ open class Plugin @Inject constructor(
         ActionBuilder(events.computeIfAbsent(T::class) { mutableListOf() })
 
     /**
-     * Return a
+     * Return an instance of the injected property with type [T].
      */
     inline fun <reified T> inject(): ObservableProperty<T> =
         InjectedProperty(injector.getInstance(T::class.java))
