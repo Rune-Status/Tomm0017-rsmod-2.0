@@ -1,6 +1,5 @@
 package gg.rsmod.game.plugin
 
-import com.google.inject.Inject
 import com.google.inject.Injector
 import gg.rsmod.game.action.Action
 import gg.rsmod.game.event.Event
@@ -16,9 +15,7 @@ import kotlin.reflect.KClass
  *
  * @author Tom
  */
-open class Plugin @Inject constructor(
-    val injector: Injector
-) {
+open class Plugin(val injector: Injector) {
 
     /**
      * The [Action]s and their [Event] type that this plugin has asked to listen to.
